@@ -46,13 +46,14 @@ function App() {
             </label>
           </form>
           <div className="bc-white">
-            <ul className="text">
+            <ul className="text overflow">
               {data?.map((item) => (
                 <li
                   style={{
+                    padding: "5px",
                     textDecorationLine: item.Completed ? "line-through" : "none",
                   }}
-                  className=" jcb"
+                  className="flex jcb"
                   key={item.id}
                 >
                   <div className="flex g-10">
