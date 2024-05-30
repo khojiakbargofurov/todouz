@@ -48,7 +48,7 @@ function App() {
           <div className="bc-white">
             <ul className="text overflow">
               {data?.map((item) => (
-                <li 
+                <li
                   style={{
                     padding: "5px",
                     textDecorationLine: item.Completed ? "line-through" : "none",
@@ -57,17 +57,12 @@ function App() {
                   key={item.id}
                 >
                   <div className="flex g-10">
-                    <div
-                      style={{
-                        backgroundColor: item.Completed ? "#000" : "#fff",
-                      }}
-                      onClick={() => dispatch(textDecoration(item.id))}
-                      className="div3"
-                    >
-                      {item.Completed && (
-                        <img className="img" src="/icon-check.svg" alt="" />
-                      )}
-                    </div>
+                    <input
+                      type="checkbox"
+                      checked={item.Completed}
+                      onChange={() => dispatch(textDecoration(item.id))}
+                      className=""
+                    />
                     {item.title}
                   </div>
                   <div

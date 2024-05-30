@@ -7,36 +7,6 @@
   position: relative;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
   padding: 2em;
 }
@@ -137,6 +107,7 @@ main {
 .flex {
   display: flex;
   align-items: center;
+  padding: 0;
 }
 
 .div2 {
@@ -161,6 +132,10 @@ ul,
 ol {
   list-style: none;
   padding: 0  ;
+  min-height: 100px;
+}
+li{
+  padding: 0;
 }
 
 .text {
@@ -170,23 +145,48 @@ ol {
 .jcb {
   display: flex;
   justify-content: space-between;
+  padding: 0;
 }
 
 .pointer {
   cursor: pointer;
 }
-
-.div3 {
-  border-radius: 100%;
-  width: 25px;
-  height: 25px;
-  border: 1px solid #000000;
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #000; /* Border color */
+  border-radius: 50%; /* Makes the checkbox rounded */
+  background-color: #fff; /* Background color */
   cursor: pointer;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
 }
 
+input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%); /* Checked background color */
+}
+
+input[type="checkbox"]:checked::after {
+  align-items: center;
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 9px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+input{
+  margin: 0;
+}
 .img {
   width: 20px;
-  padding: auto;
 }
 
 
