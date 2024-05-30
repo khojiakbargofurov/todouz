@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import "./App.css";
-import Footer from "./components/footer/footer";
+import Footer from "./components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ActiveTitle,
@@ -17,7 +17,7 @@ function App() {
 
   const inputRef = useRef();
 
-  const Submit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newTodo = {
       id: Math.random(),
@@ -27,14 +27,13 @@ function App() {
     dispatch(addTitle(newTodo));
     inputRef.current.value = "";
   };
-  console.log(data);
 
   return (
     <>
       <header className="bm-d-dark w-100 h-100" />
       <main>
         <div>
-          <form className="color-dark" onSubmit={Submit}>
+          <form className="color-dark" onSubmit={handleSubmit}>
             <label htmlFor="">
               <div className="div" />
               <input
@@ -47,47 +46,42 @@ function App() {
             </label>
           </form>
           <div className="bc-white">
-            <ul className="text overflow">
-              {data?.map((item) => {
-                return (
-                  <li
-                    style={{
-                      padding: "5px",
-                      "text-decoration-line": item.Completed
-                        ? "line-through"
-                        : "none",
-                    }}
-                    className="flex jcb"
-                    key={item.id}
-                  >
-                    <div className="flex g-10">
-                      <div
-                        style={{
-                          "background-color": item.Completed ? "#000" : "#fff ",
-                        }}
-                        onClick={() => dispatch(textDecoration(item.id))}
-                        className="div3"
-                      >
-                        {item.Completed ? (
-                          <img className="img" src="/icon-check.svg" alt="" />
-                        ) : (
-                          ""
-                        )}
-                      </div>
-                      {item.title}
-                    </div>
+            <ul className="text">
+              {data?.map((item) => (
+                <li
+                  style={{
+                    textDecorationLine: item.Completed ? "line-through" : "none",
+                  }}
+                  className=" jcb"
+                  key={item.id}
+                >
+                  <div className="flex g-10">
                     <div
-                      className="pointer"
-                      onClick={() => dispatch(deletTitle(item.id))}
+                      style={{
+                        backgroundColor: item.Completed ? "#000" : "#fff",
+                      }}
+                      onClick={() => dispatch(textDecoration(item.id))}
+                      className="div3"
                     >
-                      <img src="/icon-cross.svg" alt="" />
+                      {item.Completed && (
+                        <img className="img" src="/icon-check.svg" alt="" />
+                      )}
                     </div>
-                  </li>
-                );
-              })}
+                    {item.title}
+                  </div>
+                  <div
+                    className="pointer"
+                    onClick={() => dispatch(deletTitle(item.id))}
+                  >
+                    <img src="/icon-cross.svg" alt="" />
+                  </div>
+                </li>
+              ))}
             </ul>
             <div className="flex div2">
-              <div>5 items left</div>
+              <div>
+                {data.length > 0 ? `${data.length} items` : "0 items"}
+              </div>
               <div className="g-10">
                 <button
                   onClick={() => dispatch(textDecorationAll())}
