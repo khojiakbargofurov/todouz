@@ -32,7 +32,7 @@ function App() {
     <>
       <header className="bm-d-dark w-100 h-100" />
       <main>
-        <div>
+        <div className="todo">
           <form className="color-dark" onSubmit={handleSubmit}>
             <label htmlFor="">
               <div className="div" />
@@ -48,7 +48,7 @@ function App() {
           <div className="bc-white">
             <ul className="text overflow">
               {data?.map((item) => (
-                <li
+                <li 
                   style={{
                     padding: "5px",
                     textDecorationLine: item.Completed ? "line-through" : "none",
